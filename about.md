@@ -8,8 +8,15 @@ Some information about you!
 
 ### More Information
 
-A place to include any other types of information that you'd like to include about yourself.
+I love to program and automate things. Things that are mundane and deserves to
+be automated.
+My goto and favourite programming language is Javascript, although I have been programming
+for more then a decade now in various other languages like Java, ABAP, Python , a little
+bit of Elixir.
+
+Oh , I also like to write about the programming hacks I do, so that i dont
+forget them :) ...
 
 ### Contact me
 
-[email@domain.com](mailto:email@domain.com)
+[souravchatterjee81@gmail.com](mailto:souravchatterjee81@gmail)
