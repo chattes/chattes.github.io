@@ -4,7 +4,7 @@ title: About
 permalink: /about/
 ---
 
-Full Stack Developer(Javascript).
+Full Stack Developer. Currently loves and writes Javascript for Fun and Work
 Bangalore
 
 ### More Information
