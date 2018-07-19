@@ -13,6 +13,13 @@ title: How I setup my home NAS Server
 * Internet Connection!
 
 
-[^TODO]
+#### Raspberry Pi as NAS Server ####
 
-[^TODO]:To be continued...
+We will be using the cheap and low powered Raspberry PI as our home NAS Server.
+
+We need to download an image of Raspbian which is the debian based OS that will power our pi.
+
+We can install multiple OS in the PI, but since I am setting it up as a headless
+server , without the need for any GUI, we will use the [Rasbian Stretch Lite](https://www.raspberrypi.org/downloads/raspbian/) image.
+Download the image into your laptop/desktop(I am using a macbook).
+
