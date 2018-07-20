@@ -4,8 +4,9 @@ title: About
 permalink: /about/
 ---
 
-Full Stack Developer. Currently loves and writes Javascript for Fun and Work
-Bangalore
+Full Stack Developer. I love to write both front and backend Javascript for Fun and Work.
+
+I am Based out of Bangalore.
 
 ### More Information
 
@@ -15,8 +16,8 @@ My goto and favourite programming language is Javascript, although I have been p
 for more then a decade now in various other languages like Java, ABAP, Python , a little
 bit of Elixir.
 
-Oh , I also like to write about the programming hacks I do, so that i dont
-forget them :) ...
+I try to write the things that are usually interesting and new for me in this
+blog, so that I can record and share these findings.
 
 ### Contact me
 
