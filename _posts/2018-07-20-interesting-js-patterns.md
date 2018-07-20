@@ -1,11 +1,11 @@
 ---
 layout: post
-title: Interesting JS Patterns that I discovered
+title: Interesting JS Patterns/Tricks that I discovered
 ---
 
-# Arrays #
+## Arrays ##
 
-## Destructuring Patterns ##
+### Destructuring Patterns ###
 
 ```javascript
 > result = [ [null, 1],["error", null],[null, 2],["error",4] ]
@@ -26,7 +26,7 @@ Or as some languages do put a variable which signifies I dont care
 [ [ null, 1 ], [ null, 2 ] ]
 ```
 
-## For Looping ##
+### For Looping ###
 
 If i want to run a for loop X times and do something with it..
 
