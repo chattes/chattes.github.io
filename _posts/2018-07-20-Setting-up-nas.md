@@ -44,9 +44,7 @@ Hard Drives to the PI and check if they are recognized.
 
 Type command 
 
-```
-sudo blkid
-```
+`sudo blkid`
 
 
 
