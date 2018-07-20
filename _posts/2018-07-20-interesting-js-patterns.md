@@ -3,6 +3,9 @@ layout: post
 title: Interesting JS Patterns that I discovered
 ---
 
+# Array Destructuring Patterns #
+
+
 {% codeblock Filtering Array Data lang:javascript URL link_text %}
 > result = [ [null, 1],["error", null],[null, 2],["error",4] ]
 [ [ null, 1 ], [ 'error', null ], [ null, 2 ], [ 'error', 4 ] ]
