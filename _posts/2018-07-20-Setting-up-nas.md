@@ -38,3 +38,15 @@ plugging the Raspberry PI with an Ethernet cable.
 Now after the initial boot we should be able to log in to the PI server.
 The user is generally ```pi``` and the password ```raspberry```.
 
+# Mounting Hard Drives #
+Now that our pi is up we need to mount some external Hard Drives. Connect your
+Hard Drives to the PI and check if they are recognized.
+
+Type command 
+
+```
+sudo blkid
+```
+
+
+
