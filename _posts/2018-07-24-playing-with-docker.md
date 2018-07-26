@@ -24,47 +24,53 @@ I need to run two conatiners
 This is the yml file i took
 
 ```
-version: '3'
+version: '2'
 services:
   app:
-    deploy:
-      resources:
-        limits:
-          memory: 300M
-          cpus: '1'
+    restart: always
     build: .
     ports:
-      - '3000:3000'
-    volumes:
-      - .:/home/nodejs/app
-      - /home/nodejs/app/node_modules
-  cassandra-1:
-    deploy:
-      replicas: 1
-      resources:
-        limits:
-          memory: 190M
-        reservations:
-          memory: 76M
-    hostname: cassandra-1
-    image: cassandra:latest
-    command: /bin/bash -c "sleep 1 && echo ' -- Pausing to let system catch up ... -->' && /docker-entrypoint.sh cassandra -f"
+      - 3000:3000
+    # command: bash -c 'while !</dev/tcp/db/5432; do sleep 1; done; node index.js'
+    links:
+      - db
+    depends_on:
+      - db
     environment:
-      HEAP_NEWSIZE: 1M
-      MAX_HEAP_SIZE: 1024M 
-    expose:
-      - 7000
-      - 7001
-      - 7199
-      - 9042
-      - 9160
-    volumes: # uncomment if you desire mounts, also uncomment cluster.sh
-      - ./data/cassandra-1:/var/lib/cassandra:rw    
-    ```
+      - DATABASE_URL=postgres://postgres:password@db:5432/flights
+      - REDIS_HOST=redis
 
-		With this seetings I am basically running a node server with memory limits
-		and limited cpu and a Cassandra DB 
+    volumes:
+       - .:/home/nodejs/app
+       - /home/nodejs/app/node_modules
+  db:
+    image: postgres:9.6.2-alpine
+    volumes:
+      - ./postgresdata=/var/lib/postgresql/data
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_DB=flights
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 8080:8080
+  redis: 
+    image: redis:alpine
+```
 
+With this seetings I am basically running a node server with memory limits
+and limited cpu and a Cassandra DB 
+
+#### Docker + Postgres +Node ####
+
+> Connection Problems
+[Connection Issues](https://stackoverflow.com/questions/33357567/econnrefused-for-postgres-on-nodejs-with-dockers)
+
+With  this the Docker containers are up and running for NodeJS + PostGres +
+redis
+Now we need to make it availabe to network...
 
 
 
