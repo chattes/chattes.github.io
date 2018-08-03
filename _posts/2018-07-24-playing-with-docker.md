@@ -73,4 +73,10 @@ redis
 Now we need to make it availabe to network...
 
 
+The node server can be made available by opening port 80 with nginx and mapping
+NodeJS as the upstream server.
+
+[Reference](https://medium.com/@joatmon08/using-containers-to-learn-nginx-reverse-proxy-6be8ac75a757)
+
+
 
