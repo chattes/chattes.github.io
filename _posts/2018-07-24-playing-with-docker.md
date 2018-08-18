@@ -79,4 +79,8 @@ NodeJS as the upstream server.
 [Reference](https://medium.com/@joatmon08/using-containers-to-learn-nginx-reverse-proxy-6be8ac75a757)
 
 
+#### Oh Pupeteer + NodeJS + Ubuntu
 
+Had some problems today running pupeteer in docker image alpine for Node.
+
+Found this [Pupeteer](https://paul.kinlan.me/hosting-puppeteer-in-a-docker-container/)
