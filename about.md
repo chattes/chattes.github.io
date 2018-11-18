@@ -27,6 +27,5 @@ blog, so that I can record and share these findings.
 
 ### Resume
 
-[link with
-title](https://docs.google.com/document/d/1rzozadaHhFaD6l_tBqaOlOYKg2LBU8vAFMdk68PUa-A
+[Sourav's Resume](https://docs.google.com/document/d/1rzozadaHhFaD6l_tBqaOlOYKg2LBU8vAFMdk68PUa-A
 "Sourav's Resume")
