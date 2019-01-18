@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Playig with Docker
+title: Playing with Docker
 ---
 
 
@@ -84,3 +84,5 @@ NodeJS as the upstream server.
 Had some problems today running pupeteer in docker image alpine for Node.
 
 Found this [Pupeteer](https://paul.kinlan.me/hosting-puppeteer-in-a-docker-container/)
+
+
