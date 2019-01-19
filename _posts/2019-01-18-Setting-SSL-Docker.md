@@ -36,8 +36,11 @@ I used the following 2 containers to get the architecture up and running
 
 Let me put it in a picture how the solution looks now
 
+Architecture: 
+![alt text][Architecture]
+
 [Architecure]:
-https://github.com/chattes/chattes.github.io/blob/master/Assets/Cheapp%20Arch.png
+https://raw.githubusercontent.com/chattes/chattes.github.io/master/Assets/Cheapp%20Arch.png
 "Architecure"
 
 This makes it better as in the future I can add another container and just 
