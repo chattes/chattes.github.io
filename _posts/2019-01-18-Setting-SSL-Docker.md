@@ -28,80 +28,24 @@ which is so elegant! Yippie.
 
 ###### How ??
 
+
+I used the following 2 containers to get the architecture up and running
+
+[jwilder/nginx-proxy](https://github.com/jwilder/nginx-proxy)
+[JrCs/docker-letsencrypt-nginx-proxy-companion](https://github.com/JrCs/docker-letsencrypt-nginx-proxy-companion)
+
 Let me put it in a picture how the solution looks now
 
+[Architecure]:
+https://github.com/chattes/chattes.github.io/blob/master/Assets/Cheapp%20Arch.png
+"Architecure"
 
+This makes it better as in the future I can add another container and just 
+forward request to a new sub domain using the nginx reverse proxy.
 
-
-#### Example ####
-
-I need to run two conatiners
-
-* A node server
-* A database server
-
-This is the yml file i took
-
-```
-version: '2'
-services:
-  app:
-    restart: always
-    build: .
-    ports:
-      - 3000:3000
-    # command: bash -c 'while !</dev/tcp/db/5432; do sleep 1; done; node index.js'
-    links:
-      - db
-    depends_on:
-      - db
-    environment:
-      - DATABASE_URL=postgres://postgres:password@db:5432/flights
-      - REDIS_HOST=redis
-
-    volumes:
-       - .:/home/nodejs/app
-       - /home/nodejs/app/node_modules
-  db:
-    image: postgres:9.6.2-alpine
-    volumes:
-      - ./postgresdata=/var/lib/postgresql/data
-    environment:
-      - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=password
-      - POSTGRES_DB=flights
-  adminer:
-    image: adminer
-    restart: always
-    ports:
-      - 8080:8080
-  redis: 
-    image: redis:alpine
-```
-
-With this seetings I am basically running a node server with memory limits
-and limited cpu and a Cassandra DB 
-
-#### Docker + Postgres +Node ####
-
-> Connection Problems
-[Connection Issues](https://stackoverflow.com/questions/33357567/econnrefused-for-postgres-on-nodejs-with-dockers)
-
-With  this the Docker containers are up and running for NodeJS + PostGres +
-redis
-Now we need to make it availabe to network...
-
-
-The node server can be made available by opening port 80 with nginx and mapping
-NodeJS as the upstream server.
-
-[Reference](https://medium.com/@joatmon08/using-containers-to-learn-nginx-reverse-proxy-6be8ac75a757)
-
-
-#### Oh Pupeteer + NodeJS + Ubuntu
-
-Had some problems today running pupeteer in docker image alpine for Node.
-
-Found this [Pupeteer](https://paul.kinlan.me/hosting-puppeteer-in-a-docker-container/)
+The repo is excellently documented and pretty straigh forward to get up and
+running.
+I had struggled before this with other SSL certbot containers, and they worked
+inconsistently for me.
 
 
