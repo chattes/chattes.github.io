@@ -30,6 +30,24 @@ We will create a PodCast app that gets the data from Various Podcasts.
 We use Genserver per Podcast name. It will fetch data from the API and then
 store data fetched in ETS for each Podcast.
 
+#### GenServer
+
+Genserver starts an Elixir Process and holds its own state.
+It has a set of callbacks which can be used to Apply the business Logic.
+
+We start a Genserver per Podcast. I want to name each Genserver as I dont
+want to deal with PIDs. For that I use the *:global* atom to store the name
+in the Global Module.
+
+```
+  def start_link(state, name) do
+    GenServer.start_link(__MODULE__, state, name: {:global, name})
+  end
+```	
+
+
+
+
 
 
 
