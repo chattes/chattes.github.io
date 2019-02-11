@@ -100,6 +100,16 @@ and clean with
 docker system prune
 ```
 
+##### Copy Docker Images From Development to Production(Offline)
+
+If we want to copy our images that we have created using docker-compose.yml file
+into a remote system like production in offline mode.
+Then:
+
+* docker images
+* docker save -o <path for generated tar file.tar> <image/s name> 
+* scp .tar to remote system
+* In remote system `docker load -i <path to image tar file>`
 
 
 
