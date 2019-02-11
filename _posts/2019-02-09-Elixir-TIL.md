@@ -58,6 +58,9 @@ The above starts a GenServer with name "jabber" which is registered in the
 global Registry
 
 
+####Observer
+
+
 #### Fault Tolerance
 
 Fault Tolerance is baked into the Elixir/Erlang Systems and we will achieve it

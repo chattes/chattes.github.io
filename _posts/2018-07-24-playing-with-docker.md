@@ -86,3 +86,20 @@ Had some problems today running pupeteer in docker image alpine for Node.
 Found this [Pupeteer](https://paul.kinlan.me/hosting-puppeteer-in-a-docker-container/)
 
 
+#####Docker eating up Disk Space
+
+Check with
+
+```
+docker sudo df
+```
+
+and clean with
+
+```
+docker system prune
+```
+
+
+
+
