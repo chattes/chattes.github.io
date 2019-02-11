@@ -44,11 +44,29 @@ in the Global Module.
     GenServer.start_link(__MODULE__, state, name: {:global, name})
   end
 ```	
+From iex start the Genserver as:
+
+```
+iex(1)> Podder.start_link(%{}, "jabber")
+{:ok, #PID<0.134.0>}
+iex(2)> Podder.get_episodes({:global, "jabber"})
+%{}
+iex(3)> 
+```
+
+The above starts a GenServer with name "jabber" which is registered in the
+global Registry
 
 
+#### Fault Tolerance
 
+Fault Tolerance is baked into the Elixir/Erlang Systems and we will achieve it
+with Supervision Trees
 
-
-
-
+So our app will start a Supervision Tree , which will start a 
+[Dynamic Supervisor](https://hexdocs.pm/elixir/DynamicSupervisor.html)
+We need a Dynamic Supervisor as we dont know how many PodCast GenServer we will
+be starting when the App Starts.
+As and when I add my Favorite PodCast, the Dynamic Supervisor starts a new
+Podcast Genserver.
 
