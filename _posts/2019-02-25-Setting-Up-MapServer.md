@@ -20,7 +20,7 @@ geojson queries which we will be using.
 We will download all the openstreet map data from 
 [Geofabrik](http://download.geofabrik.de/)
 
-> Extracting Data
+####### Extracting Data
 We need to extract the POI data from the File downloaded.
 We need to use a tool called 
 [Osmosis](https://wiki.openstreetmap.org/wiki/Osmosis) for this.
@@ -40,6 +40,22 @@ osmosis --read-pbf europe-latest.osm.pbf \
         --tf reject-ways --tf reject-relations \
         --write-xml Europe.nodes.osm
 ```
+We can remove some nodes if we dont want them.
+The downloaded files contain all data from India but there are some data we dont
+need. We will scrup the data using 
+[osmconvert](https://wiki.openstreetmap.org/wiki/Osmconvert#Linux)
+
+In MAC we can run 
+
+`wget -O - http://m.m.i24.cc/osmconvert.c | cc -x c - -lz -O3 -o osmconvert`
+Then move the file to `mv osmconvert /usr/local/bin`
+
+Now we can run the following to scrub data
+`osmconvert India.nodes.osm — drop-ways — drop-author — drop-relations —
+drop-versions India.poi.osm`
+
+
+
 
 				
 
