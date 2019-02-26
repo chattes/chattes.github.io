@@ -47,17 +47,59 @@ need. We will scrup the data using
 
 In MAC we can run 
 
-`wget -O - http://m.m.i24.cc/osmconvert.c | cc -x c - -lz -O3 -o osmconvert`
-Then move the file to `mv osmconvert /usr/local/bin`
+```wget -O - http://m.m.i24.cc/osmconvert.c | cc -x c - -lz -O3 -o osmconvert```
+Then move the file to ```mv osmconvert /usr/local/bin```
 
 Now we can run the following to scrub data
-`osmconvert India.nodes.osm — drop-ways — drop-author — drop-relations —
-drop-versions India.poi.osm`
+
+```osmconvert India.nodes.osm — drop-ways — drop-author — drop-relations —
+drop-versions India.poi.osm```
 
 
+###### Converting to GeoJSON data
 
+For converting the .osm file to GEOJSON we use a tool [ogr2ogr](https://www.gdal.org/ogr2ogr.html)
+This can be installed using
+``` brew install gdal ```
 
-				
+We are now ready with the GEOJSON data. We will upload this to mongoDB using the
+npm library
 
+[geojson-to-mongo](https://www.npmjs.com/package/geojson-to-mongo)
+
+The npm script reads the GeoJSON file we created and uploads it to mongodb.
+
+Once the Data Is Loaded into MongoDB we can query using GeoJSON queries.
+
+Example:
+
+```
+  var query = {
+    $and: [
+      {
+        geometry: {
+          $near: {
+            $geometry: {
+              type: "Point",
+              coordinates: [options.lat, options.lng]
+            },
+            $maxDistance: 2000,
+            $minDistance: 0
+          }
+        }
+      },
+      {
+        "properties.other_tags": { $regex: "historic" }
+      }
+    ]
+  };
+```
+
+##### Extracting details of POI
+
+The POI data extracted has a wikidata id and wikipedia link within them.
+We will use that to enrich the POI with Wikipedia Extracts and Images
+
+We can query the [Wikipedia Rest API](https://en.wikipedia.org/api/rest_v1/#!)
 
 
