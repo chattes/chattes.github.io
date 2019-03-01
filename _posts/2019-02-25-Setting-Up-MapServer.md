@@ -20,7 +20,7 @@ geojson queries which we will be using.
 We will download all the openstreet map data from 
 [Geofabrik](http://download.geofabrik.de/)
 
-####### Extracting Data
+##### Extracting Data
 We need to extract the POI data from the File downloaded.
 We need to use a tool called 
 [Osmosis](https://wiki.openstreetmap.org/wiki/Osmosis) for this.
