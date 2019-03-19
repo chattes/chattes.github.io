@@ -208,8 +208,3 @@ dont have to modify the state, so we can write like.
 	* handle_info
 	
 	Usually we can run periodic tasks here. We can see later about this.
-
-
-
-
-
