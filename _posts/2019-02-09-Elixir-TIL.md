@@ -44,6 +44,7 @@ in the Global Module.
     GenServer.start_link(__MODULE__, state, name: {:global, name})
   end
 ```	
+
 From iex start the Genserver as:
 
 ```
@@ -54,14 +55,16 @@ iex(2)> Podder.get_episodes({:global, "jabber"})
 iex(3)> 
 ```
 
-The above starts a GenServer with name "jabber" which is registered in the
+The above starts a GenServer with name *jabber* which is registered in the
 global Registry
 
 
 #### Observer
 
 Fire up an Elixir Shell and 
-``` :observer.start ```
+``` 
+:observer.start 
+```
 
 
 #### Fault Tolerance
@@ -105,7 +108,9 @@ name.
 
 Basically when starting the GenServer we start it with the via module
 
-``` GenServer.start_link(__MODULE__, state, name: via_tuple(user_name)) ```
+``` 
+GenServer.start_link(__MODULE__, state, name: via_tuple(user_name)) 
+```
 
 Note the via_tuple it takes the Name and stores it in the Registry
 
@@ -151,7 +156,7 @@ Application starts.
 
 ###### Genserver callbacks
 
-* handle_call
+###### handle_call
 
 When our server needs to return something back to the caller we use the
 handle_call.
@@ -159,6 +164,7 @@ For our case we use it search for Podcasts and return the search results, we
 dont have to modify the state, so we can write like.
 
 ```
+
   def handle_call({:search, query}, from, state) do
     response =
       with {:ok, result} <- Podder.ListenProvider.API.search_podcasts(query) do
@@ -171,6 +177,7 @@ dont have to modify the state, so we can write like.
 
     {:reply, response, state}
   end
+
 	```
 
 	See the return from the function, we query the API( I had used Task.Async to
@@ -182,7 +189,7 @@ dont have to modify the state, so we can write like.
 	*Note: Our Genserver will be blocked till the Query from the external API
 	returns*
 
-	* handle_cast
+####### handle_cast
 	We will use this only to change the state and not return any response back to
 	the caller
 
@@ -197,14 +204,16 @@ dont have to modify the state, so we can write like.
     new_pods = Map.get(state, "podcasts") |> Enum.concat(my_items)
     new_state = Map.put(state, "podcasts", new_pods)
     {:noreply, new_state}
-    # {:noreply, %{state | "podcasts" => new_pods}}
-  end
+   end
 	```
+
 	Here we take an item , item is podcast or multiple podcasts that the user has
 	subscribed.
 	We change our state with new Podcasts the user has subscribed. Note there is
 	nothing returned back to the calling process and our Genserver is not blocked.
 
-	* handle_info
+####### handle_info
 	
 	Usually we can run periodic tasks here. We can see later about this.
+
+
