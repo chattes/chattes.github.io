@@ -120,14 +120,14 @@ defp via_tuple(name), do: {:via, Registry, {Podder.Registry, name}}
 
 We can get the PID of the process as below
 
-```
+```elixir
 def whereis(name: name), do: Registry.whereis_name({Podder.Registry, name})
 ```
 
 We also need to start the Registry, so in our main Application we start the
 Registry under a Supervisor 
 
-```
+```elixir
   def start(_type, _args) do
     # List all child processes to be supervised
     children = [
@@ -163,8 +163,8 @@ handle_call.
 For our case we use it search for Podcasts and return the search results, we
 dont have to modify the state, so we can write like.
 
-```
 
+```elixir
   def handle_call({:search, query}, from, state) do
     response =
       with {:ok, result} <- Podder.ListenProvider.API.search_podcasts(query) do
@@ -177,8 +177,8 @@ dont have to modify the state, so we can write like.
 
     {:reply, response, state}
   end
+```
 
-	```
 
 	See the return from the function, we query the API( I had used Task.Async to
 	query the API before, but thats an overkill)
@@ -189,11 +189,14 @@ dont have to modify the state, so we can write like.
 	*Note: Our Genserver will be blocked till the Query from the external API
 	returns*
 
+
+
 ####### handle_cast
+
 	We will use this only to change the state and not return any response back to
 	the caller
 
-	```
+```elixir
 	  def handle_cast({:save, items}, state) do
     my_items =
       cond do
@@ -205,7 +208,7 @@ dont have to modify the state, so we can write like.
     new_state = Map.put(state, "podcasts", new_pods)
     {:noreply, new_state}
    end
-	```
+```
 
 	Here we take an item , item is podcast or multiple podcasts that the user has
 	subscribed.
