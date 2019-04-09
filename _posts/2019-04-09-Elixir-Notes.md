@@ -8,7 +8,7 @@ title: Elixir Notes
 ###### Filtering a Collection with Pattern Matching
 
 
-
+``` Elixir
 
 iex(33)> test
 
@@ -18,12 +18,12 @@ iex(34)> Enum.filter(test, &match?({:ok, _},&1))
 
 [ok: %{"a" => "one"}]
 
-
-
+```
 
 Instead of match
 
 
+``` Elixir
 
 
     test |> Enum.filter(fn
@@ -34,13 +34,14 @@ Instead of match
 
     end)
 
-
+```
 
 
 ###### Filter and Map and Extract nth Element of Tuple
 
 
 
+```Elxir
 
 iex(43)> test
 
@@ -50,6 +51,7 @@ iex(44)> test |> Enum.filter(&match?({:ok, _},&1)) |> Enum.map(&(&1 |> elem(1)))
 
 [%{"a" => "one"}]
 
+```
 
 
 
@@ -57,6 +59,7 @@ iex(44)> test |> Enum.filter(&match?({:ok, _},&1)) |> Enum.map(&(&1 |> elem(1)))
 
 
 
+```
 
     data
 
@@ -72,19 +75,14 @@ iex(44)> test |> Enum.filter(&match?({:ok, _},&1)) |> Enum.map(&(&1 |> elem(1)))
 
         end).()
 
-
-
-
-
-
-
-
+```
 
 
 ###### Extracting Data One wants from JSON Responses. Use Sigils!
 
 
 
+```
 
   @expected_fields ~w(
 
@@ -101,21 +99,11 @@ iex(44)> test |> Enum.filter(&match?({:ok, _},&1)) |> Enum.map(&(&1 |> elem(1)))
   )
 
 
-
-
-
-
-
   def process_request_url(url) do
 
     "https://api.github.com" <> url
 
   end
-
-
-
-
-
 
 
   def process_response_body(body) do
@@ -132,45 +120,32 @@ iex(44)> test |> Enum.filter(&match?({:ok, _},&1)) |> Enum.map(&(&1 |> elem(1)))
 
 end
 
-
-
+```
 
 ###### Check Current Evironment in IEX
 
-
-
+```
 
 Mix.env
 
-
-
+```
 
 #### Phoenix
 
 Generate Routes
 
-
-
-
 ###### Add Routes to router.ex and then run
 
+```
 mix phx.routes
-
-
+```
 
 
 ###### Generating New Controllers
 
-
-
-
+```
 mix phx.gen.json Podder Podcast podcasts podcast_name:string  --context-app podder --no-schema
+```
 
-
-
-
-
-
-
-Generates a New Controller with name Podder.Podcast with Context podder. Since we don’t have any DB so no-schema.
+*Generates a New Controller with name Podder.Podcast with Context podder. Since we don’t have any DB so no-schema.*
 
